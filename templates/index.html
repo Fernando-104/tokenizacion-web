@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<!-- Indica que el documento utiliza HTML5. -->
+
+<html lang="es">
+<!-- Indica que el idioma principal de la página es español. -->
+
+<head>
+    <!-- Contiene la configuración de la página. -->
+
+    <meta charset="UTF-8">
+    <!-- Permite mostrar correctamente letras como ñ y vocales acentuadas. -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Hace que la página se adapte a celulares y computadoras. -->
+
+    <title>Proyecto de Tokenización</title>
+    <!-- Define el título que aparece en la pestaña del navegador. -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+    <!-- Conecta esta página con el archivo de estilos CSS. -->
+</head>
+
+<body>
+    <!-- Contiene todo lo que se verá en la página. -->
+
+    <main class="contenedor">
+        <!-- Agrupa el contenido principal y permite centrarlo con CSS. -->
+
+        <header class="encabezado">
+            <!-- Agrupa el título y la descripción del proyecto. -->
+
+            <h1>Tokenización de texto</h1>
+            <!-- Muestra el título principal. -->
+
+            <p>
+                Convierte texto en palabras, frecuencias y vectores
+                para su análisis mediante inteligencia artificial.
+            </p>
+            <!-- Explica brevemente el propósito de la aplicación. -->
+
+        </header>
+
+        <section class="tarjeta">
+            <!-- Crea la sección donde el usuario introduce su texto. -->
+
+            <h2>1. Ingresa tu texto</h2>
+            <!-- Indica el primer paso del proceso. -->
+
+            <form method="POST">
+                <!-- Envía el texto a Flask para procesarlo. -->
+
+                <textarea
+                    name="texto"
+                    placeholder="Escribe aquí una o varias oraciones..."
+                    required
+                >{{ texto }}</textarea>
+                <!-- Área para escribir.
+                     name="texto" permite recuperar el contenido en Python.
+                     placeholder muestra una sugerencia.
+                     required evita enviar el formulario vacío.
+                     {{ texto }} conserva el texto después de procesarlo. -->
+
+                <button type="submit">
+                    Procesar texto
+                </button>
+                <!-- Envía el formulario cuando se hace clic. -->
+
+            </form>
+        </section>
+
+        {% if texto %}
+        <!-- Muestra los resultados únicamente si existe texto ingresado. -->
+
+        <section class="tarjeta">
+            <!-- Sección para mostrar la tokenización. -->
+
+            <h2>2. Tokenización de oraciones</h2>
+            <!-- Título de la primera etapa del procesamiento. -->
+
+            <ul>
+                <!-- Crea una lista para mostrar las oraciones. -->
+
+                {% for oracion in oraciones %}
+                <!-- Recorre cada oración obtenida en Python. -->
+
+                <li>{{ oracion }}</li>
+                <!-- Muestra una oración dentro de un elemento de lista. -->
+
+                {% endfor %}
+                <!-- Termina el recorrido de las oraciones. -->
+
+            </ul>
+        </section>
+
+        <section class="tarjeta">
+            <!-- Sección para mostrar las palabras identificadas. -->
+
+            <h2>3. Tokenización de palabras</h2>
+            <!-- Título de la etapa donde se identifican los tokens. -->
+
+            <p class="resultado">
+                {{ tokens | join(", ") }}
+            </p>
+            <!-- Muestra las palabras separadas por comas. -->
+
+        </section>
+
+        <section class="tarjeta">
+            <!-- Sección para mostrar las palabras normalizadas. -->
+
+            <h2>4. Normalización</h2>
+            <!-- Título de la etapa de normalización. -->
+
+            <p class="resultado">
+                {{ normalizados | join(", ") }}
+            </p>
+            <!-- Muestra las palabras en minúsculas y sin acentos. -->
+
+        </section>
+
+        <section class="tarjeta">
+            <!-- Sección donde aparecen los tokens útiles. -->
+
+            <h2>5. Filtrado de stopwords</h2>
+            <!-- Título de la etapa que elimina palabras comunes. -->
+
+            <p class="resultado">
+                {{ filtrados | join(", ") }}
+            </p>
+            <!-- Muestra las palabras que quedaron después del filtrado. -->
+
+        </section>
+
+        <section class="tarjeta">
+            <!-- Sección donde se presenta la tabla de frecuencias. -->
+
+            <h2>6. Bag of Words: tabla de frecuencias</h2>
+            <!-- Indica que se mostrará cuántas veces aparece cada palabra. -->
+
+            <table>
+                <!-- Inicia una tabla HTML. -->
+
+                <thead>
+                    <!-- Contiene los encabezados de la tabla. -->
+
+                    <tr>
+                        <!-- Crea una fila de encabezados. -->
+
+                        <th>Palabra</th>
+                        <!-- Primera columna: nombre de la palabra. -->
+
+                        <th>Frecuencia</th>
+                        <!-- Segunda columna: cantidad de apariciones. -->
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <!-- Contiene los datos de la tabla. -->
+
+                    {% for palabra, frecuencia in frecuencias.items() %}
+                    <!-- Recorre las palabras y sus frecuencias. -->
+
+                    <tr>
+                        <!-- Crea una fila por cada palabra. -->
+
+                        <td>{{ palabra }}</td>
+                        <!-- Muestra la palabra. -->
+
+                        <td>{{ frecuencia }}</td>
+                        <!-- Muestra cuántas veces aparece. -->
+
+                    </tr>
+                    {% endfor %}
+                    <!-- Termina el recorrido de las frecuencias. -->
+
+                </tbody>
+            </table>
+        </section>
+
+        <section class="tarjeta">
+            <!-- Sección para mostrar el vocabulario y el vector. -->
+
+            <h2>7. Vector numérico</h2>
+            <!-- Título de la representación numérica. -->
+
+            <p><strong>Vocabulario ordenado:</strong></p>
+            <!-- Explica que se mostrará la lista de palabras. -->
+
+            <p class="resultado">
+                {{ vocabulario }}
+            </p>
+            <!-- Muestra las palabras en el mismo orden que el vector. -->
+
+            <p><strong>Vector Bag of Words:</strong></p>
+            <!-- Indica que aparecerá el vector de frecuencias. -->
+
+            <p class="vector">
+                {{ vector }}
+            </p>
+            <!-- Muestra los números que representan las frecuencias. -->
+
+        </section>
+
+        {% endif %}
+        <!-- Termina la condición que controla cuándo aparecen los resultados. -->
+
+        <footer>
+            <!-- Pie de página. -->
+
+            <p>Proyecto escolar de procesamiento de lenguaje natural.</p>
+            <!-- Texto final de la página. -->
+
+        </footer>
+
+    </main>
+    <!-- Termina el contenido principal. -->
+
+</body>
+<!-- Termina el contenido visible de la página. -->
+
+</html>
+<!-- Finaliza el documento HTML. -->

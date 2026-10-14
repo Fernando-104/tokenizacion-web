@@ -1,0 +1,262 @@
+
+/* Define los estilos generales de toda la página. */
+body {
+    /* Elimina los márgenes predeterminados del navegador. */
+    margin: 0;
+
+    /* Define el tipo de letra principal. */
+    font-family: Arial, sans-serif;
+
+    /* Establece el color de fondo oscuro. */
+    background: #101225;
+
+    /* Define el color principal del texto. */
+    color: #f4f4ff;
+
+    /* Aumenta un poco el espacio entre líneas. */
+    line-height: 1.6;
+}
+
+/* Da formato al contenedor que reúne todo el contenido. */
+.contenedor {
+    /* Limita el ancho para facilitar la lectura. */
+    max-width: 950px;
+
+    /* Centra el contenedor horizontalmente. */
+    margin: 0 auto;
+
+    /* Agrega espacio interior alrededor del contenido. */
+    padding: 25px;
+}
+
+/* Da formato al encabezado principal. */
+.encabezado {
+    /* Centra el título y la descripción. */
+    text-align: center;
+
+    /* Agrega espacio debajo del encabezado. */
+    margin-bottom: 30px;
+}
+
+/* Estiliza el título principal. */
+.encabezado h1 {
+    /* Aplica un color violeta al título. */
+    color: #b8a2ff;
+
+    /* Ajusta el tamaño del texto. */
+    font-size: 2.3rem;
+
+    /* Elimina el margen superior del título. */
+    margin-top: 0;
+}
+
+/* Estiliza la descripción del encabezado. */
+.encabezado p {
+    /* Usa un color más suave para diferenciarla del título. */
+    color: #d2d2e8;
+}
+
+/* Diseña las tarjetas que contienen cada etapa. */
+.tarjeta {
+    /* Establece el fondo de las tarjetas. */
+    background: #1b1e38;
+
+    /* Agrega espacio entre el borde y el contenido. */
+    padding: 22px;
+
+    /* Separa las tarjetas unas de otras. */
+    margin-bottom: 22px;
+
+    /* Redondea las esquinas. */
+    border-radius: 14px;
+
+    /* Agrega un borde discreto. */
+    border: 1px solid #343858;
+}
+
+/* Estiliza los títulos de cada tarjeta. */
+.tarjeta h2 {
+    /* Cambia el color de los subtítulos. */
+    color: #9edbff;
+
+    /* Ajusta el tamaño de los subtítulos. */
+    font-size: 1.3rem;
+
+    /* Elimina el margen superior. */
+    margin-top: 0;
+}
+
+/* Da formato al área donde se escribe el texto. */
+textarea {
+    /* Ocupa todo el ancho disponible. */
+    width: 100%;
+
+    /* Define una altura mínima para escribir cómodamente. */
+    min-height: 140px;
+
+    /* Incluye el relleno y el borde dentro del ancho. */
+    box-sizing: border-box;
+
+    /* Agrega espacio interior. */
+    padding: 14px;
+
+    /* Redondea las esquinas del área de texto. */
+    border-radius: 10px;
+
+    /* Define el color de fondo. */
+    background: #11142a;
+
+    /* Define el color de las letras. */
+    color: white;
+
+    /* Cambia el color del borde. */
+    border: 1px solid #50557d;
+
+    /* Ajusta el tamaño de letra. */
+    font-size: 1rem;
+
+    /* Permite cambiar el tamaño vertical del área de texto. */
+    resize: vertical;
+}
+
+/* Estiliza el texto de ejemplo dentro del área de texto. */
+textarea::placeholder {
+    /* Usa un color gris azulado. */
+    color: #a5a8c5;
+}
+
+/* Da formato al botón de procesamiento. */
+button {
+    /* Agrega espacio entre el botón y el área de texto. */
+    margin-top: 14px;
+
+    /* Agrega espacio interior al botón. */
+    padding: 12px 22px;
+
+    /* Elimina el borde predeterminado. */
+    border: none;
+
+    /* Redondea las esquinas. */
+    border-radius: 9px;
+
+    /* Define el fondo violeta. */
+    background: #8265e8;
+
+    /* Define el color de las letras. */
+    color: white;
+
+    /* Aumenta el tamaño del texto. */
+    font-size: 1rem;
+
+    /* Cambia el cursor para indicar que se puede hacer clic. */
+    cursor: pointer;
+
+    /* Hace que el cambio de color sea gradual. */
+    transition: background 0.2s ease;
+}
+
+/* Cambia el color del botón cuando el cursor está encima. */
+button:hover {
+    /* Usa un violeta más oscuro al pasar el cursor. */
+    background: #684bd0;
+}
+
+/* Estiliza las listas de resultados. */
+ul {
+    /* Agrega espacio a la izquierda para las viñetas. */
+    padding-left: 22px;
+}
+
+/* Da formato a los párrafos que muestran resultados. */
+.resultado {
+    /* Permite que las palabras largas pasen a otra línea. */
+    overflow-wrap: anywhere;
+
+    /* Agrega espacio interior. */
+    padding: 12px;
+
+    /* Define un fondo para distinguir los resultados. */
+    background: #11142a;
+
+    /* Redondea las esquinas. */
+    border-radius: 8px;
+}
+
+/* Destaca visualmente el vector numérico. */
+.vector {
+    /* Aumenta el tamaño de los números. */
+    font-size: 1.2rem;
+
+    /* Usa un color verde claro. */
+    color: #9ff0c1;
+
+    /* Permite que el vector se ajuste a pantallas pequeñas. */
+    overflow-wrap: anywhere;
+}
+
+/* Da formato a la tabla de frecuencias. */
+table {
+    /* Hace que la tabla ocupe todo el ancho disponible. */
+    width: 100%;
+
+    /* Une los bordes de las celdas. */
+    border-collapse: collapse;
+
+    /* Agrega espacio encima de la tabla. */
+    margin-top: 12px;
+}
+
+/* Estiliza los encabezados y las celdas. */
+th,
+td {
+    /* Alinea el contenido a la izquierda. */
+    text-align: left;
+
+    /* Agrega espacio dentro de cada celda. */
+    padding: 12px;
+
+    /* Agrega una línea debajo de cada celda. */
+    border-bottom: 1px solid #393d5d;
+}
+
+/* Da formato a los encabezados de la tabla. */
+th {
+    /* Establece un fondo más oscuro. */
+    background: #282c4c;
+
+    /* Usa un color claro para los encabezados. */
+    color: #b8dfff;
+}
+
+/* Estiliza el pie de página. */
+footer {
+    /* Centra el texto final. */
+    text-align: center;
+
+    /* Separa el pie del resto del contenido. */
+    margin-top: 35px;
+
+    /* Usa un color de texto discreto. */
+    color: #aaaecb;
+
+    /* Reduce ligeramente el tamaño de letra. */
+    font-size: 0.9rem;
+}
+
+/* Ajusta el diseño para pantallas pequeñas. */
+@media (max-width: 600px) {
+    /* Reduce el espacio exterior en celulares. */
+    .contenedor {
+        padding: 14px;
+    }
+
+    /* Reduce el tamaño del título en celulares. */
+    .encabezado h1 {
+        font-size: 1.8rem;
+    }
+
+    /* Reduce el espacio interior de las tarjetas. */
+    .tarjeta {
+        padding: 16px;
+    }
+}
